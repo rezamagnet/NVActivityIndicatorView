@@ -29,13 +29,13 @@ import UIKit
 
 class NVActivityIndicatorAnimationBallPulse: NVActivityIndicatorAnimationDelegate {
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
-        let circleSpacing: CGFloat = 2
+        let circleSpacing: CGFloat = 4
         let circleSize: CGFloat = (size.width - 2 * circleSpacing) / 3
         let x: CGFloat = (layer.bounds.size.width - size.width) / 2
         let y: CGFloat = (layer.bounds.size.height - circleSize) / 2
         let duration: CFTimeInterval = 0.75
         let beginTime = CACurrentMediaTime()
-        let beginTimes: [CFTimeInterval] = [0.12, 0.24, 0.36]
+        let beginTimes: [CFTimeInterval] = [0.12, 0.24, 0.36, 0.50]
         let timingFunction = CAMediaTimingFunction(controlPoints: 0.2, 0.68, 0.18, 1.08)
         let animation = CAKeyframeAnimation(keyPath: "transform.scale")
 
@@ -48,7 +48,7 @@ class NVActivityIndicatorAnimationBallPulse: NVActivityIndicatorAnimationDelegat
         animation.isRemovedOnCompletion = false
 
         // Draw circles
-        for i in 0 ..< 3 {
+        for i in 0 ..< 4 {
             let circle = NVActivityIndicatorShape.circle.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
             let frame = CGRect(x: x + circleSize * CGFloat(i) + circleSpacing * CGFloat(i),
                                y: y,
